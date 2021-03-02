@@ -19,11 +19,5 @@ for year in range(year_1, year_2 + 1):
         print(year)
     elif number_1 == number_4 and number_2 == number_4:
         print(year)
-
-
-
-
-
-
-
-
+    # TODO Постарайтесь найти универсальное решение без "ручного" перебора. Сделайте функцию подсчёта цифр в числе,
+    #  например

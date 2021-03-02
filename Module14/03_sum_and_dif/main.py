@@ -1,3 +1,4 @@
+# TODO Используйте инструмент приведения стиля кода к требованиям стандарта РЕР 8: меню PyCharm - Сode/Reformat Code
 def summa(n):
     summa = 0
     while n > 0:
