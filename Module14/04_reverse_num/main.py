@@ -5,9 +5,7 @@ count = 1
 for i in n_2:
     count *= 10
 n_2 = float(n_2[::-1]) / count
-reversed_n =  n_1 + n_2
-
-
+reversed_n = n_1 + n_2
 
 k = str(input('Введите второе число: '))
 k_1, k_2 = k.split('.')
@@ -20,4 +18,3 @@ reversed_k = k_1 + k_2
 print('\nПервое число наоборот: ', reversed_n)
 print('Второе число наоборот: ', reversed_k)
 print('Сумма: ', reversed_n + reversed_k)
-

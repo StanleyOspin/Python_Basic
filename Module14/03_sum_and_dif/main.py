@@ -1,4 +1,3 @@
-# TODO Используйте инструмент приведения стиля кода к требованиям стандарта РЕР 8: меню PyCharm - Сode/Reformat Code
 def summa(n):
     summa = 0
     while n > 0:
@@ -7,6 +6,7 @@ def summa(n):
         n //= 10
     return summa
 
+
 def count(n):
     count = 0
     while n > 0:
@@ -14,6 +14,7 @@ def count(n):
         count += 1
         n //= 10
     return count
+
 
 n = int(input('Введите число: '))
 summ = summa(n)
