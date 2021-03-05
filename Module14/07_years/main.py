@@ -16,10 +16,8 @@ def years(year_1, year_2):
 
             number = number // 10
 
-            if count == 3:
-                print(year)
-
-                break
+        if count == 3:  # по-хорошему нам нужны только 3 числа одинаковых, а 4 уже перебор - поправил
+            print(year)
 
 
 year_1 = int(input('Введите первый год: '))
