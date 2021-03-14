@@ -11,5 +11,5 @@ for name in index_list:
 
 # version_2
 names = ['Артемий', 'Борис', 'Влад', 'Гоша', 'Дима', 'Евгений', 'Женя', 'Захар']
-
+print()
 print(names[::2])
