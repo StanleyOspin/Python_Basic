@@ -25,4 +25,4 @@ for i in range(len(containers_list)):
             highest_value_index = j
             containers_list[i], containers_list[highest_value_index] = containers_list[highest_value_index], containers_list[i]
 
-print('Номер, куда встанет новый контейнер: ' containers_list.index(mass_new) + 1)
+print('Номер, куда встанет новый контейнер: ', containers_list.index(mass_new) + 1)
