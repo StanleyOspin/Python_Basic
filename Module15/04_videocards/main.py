@@ -4,7 +4,7 @@ def find_new_card(graphics_card):
         if new_model < model:
             new_model = model
             return new_model
-
+# TODO эта функция не работает, проверьте на такой последовательности: 3, 1, 2
 
 quantity = int(input('Кол-во видеокарт: '))
 graphics_card = []
