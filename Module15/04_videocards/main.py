@@ -1,10 +1,10 @@
 def find_new_card(graphics_card):
     new_model = graphics_card[0]
-    for model in graphics_card:
-        if new_model < model:
-            new_model = model
-            return new_model
-# TODO эта функция не работает, проверьте на такой последовательности: 3, 1, 2
+    for i in range(1, len(graphics_card)):
+        if graphics_card[i] > new_model:
+            new_model = graphics_card[i]
+    return new_model
+
 
 quantity = int(input('Кол-во видеокарт: '))
 graphics_card = []
