@@ -1,10 +1,12 @@
+def check_letter(string, letter):
+    row = 'аоеёиуыэюя'
+    if letter in row:
+        return letter
+
+
 text = input('Введите текст: ')
-vowels = [letter for letter in text
-          if letter == 'а' or letter == 'о'
-          or letter == 'е' or letter == 'ё' or letter == 'и'
-          or letter == 'у' or letter == 'ы' or letter == 'э'
-          or letter == 'ю' or letter == 'я']
+vowels = [letter for letter in text if check_letter(text, letter)]
+
 print('\nСписок гласных букв: ', vowels)
 print('Длина списка: ', len(vowels))
-# TODO создайте переменную и привойте ей строку с глаными буквами, в коде используйте проверку на вхождение буквы в
-#  строку с помощью оператора in
+
