@@ -1,1 +1,5 @@
-# TODO здесь писать код
+string = input('Введите строку: ')
+index_1 = string.index('h')
+index_2 = string.rindex('h')
+print()
+print(string[:index_1 + 1] + string[index_2 - 1:index_1:-1] + string[index_2:])
