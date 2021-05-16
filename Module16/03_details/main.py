@@ -6,10 +6,10 @@ count = 0
 detail = input('Название детали: ')
 
 for item in shop:
-        for part in item:  # TODO отступы приняты в 4 пробела, а не в 8
-                if part == detail:
-                        total_cost += item[1]
-                        count += 1
+    for part in item:
+        if part == detail:
+            total_cost += item[1]
+            count += 1
 
 print('\nКол-во деталей - ', count)
 print('Общая стоимость - ', total_cost)
