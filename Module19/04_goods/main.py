@@ -24,4 +24,16 @@ store = {
     ],
 }
 
-# TODO здесь писать код
+for key, value in goods.items():
+    item_quantity = 0
+    item_costs = 0
+    item_total_quantity = 0
+    item_total_costs = 0
+    for item in store[value]:
+        item_quantity = 0
+        item_costs = 0
+        item_quantity += item['quantity']
+        item_costs += item['price']
+        item_total_quantity += item_quantity
+        item_total_costs += item_quantity * item_costs
+    print('{0} - {1} шт, стоимость {2} руб'.format(key, item_total_quantity, item_total_costs))
