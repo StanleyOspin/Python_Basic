@@ -1,3 +1,3 @@
-string = input('Введите строку: ').split()
-print('Самое длинное слово в строке: ', max(string, key=len))
-print('Его длинна: ', len(max(string, key=len)), 'букв')
+able_menu = input('Доступное меню: ').split(';')
+actual_menu = ', '.join(able_menu)
+print('\nНа данный момент в меню есть: ', actual_menu)
