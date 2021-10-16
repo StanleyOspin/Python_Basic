@@ -44,5 +44,34 @@ data = {
     ]
 }
 
+keys = list()
+values = list()
 
-# TODO здесь писать код
+for key in data.keys():
+    keys.append(key)
+
+for value in data.values():
+    values.append(value)
+
+print('Список ключей словаря: ', keys)
+print()
+print('Список значений словаря: ', values)
+print()
+
+data['ETH']['total_diff'] = 100
+print('В ETH добавлен новый элемент: ', data['ETH'])
+print()
+
+data['tokens'][0]['fst_token_info']['name'] = 'doge'
+print('Внутри "fst_token_info" значение ключа "name" стало =', data['tokens'][0]['fst_token_info']['name'])
+print()
+
+for item in data['tokens']:
+    data['ETH']['total_Out'] = item.pop('total_out')
+
+print('Удалено "total_out" из tokens и присвоено его значение в "total_out" внутри "ETH":', data['ETH']['total_Out'])
+print()
+
+data['tokens'][1]['sec_token_info'].pop('price')
+data['tokens'][1]['sec_token_info']['total_price'] = False
+print('Название ключа "price" изменено на "total_price" в "sec_token_info": ', data['tokens'][1]['sec_token_info'])
