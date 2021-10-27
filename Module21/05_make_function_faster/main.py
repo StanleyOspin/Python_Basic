@@ -1,9 +1,24 @@
 def calculating_math_func(data):
-    result = 1
-    for index in range(1, data + 1):
-        result *= index
+    if data in factorials:
+        result = factorials[data]
+
+    else:
+        result = max(factorials.values())
+
+        for index in range(max(factorials.keys()) + 1, data + 1):
+            result *= index
+            factorials[index] = result
+
     result /= data ** 3
+
     result = result ** 10
+
     return result
 
-# TODO оптимизировать функцию
+
+factorials = {1: 1}
+number = int(input('Введите число: '))
+while number != 0:
+    result = calculating_math_func(number)
+    print(result)
+    number = int(input('Введите число: '))
