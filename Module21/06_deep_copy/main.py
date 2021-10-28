@@ -1,3 +1,5 @@
+import copy
+
 site = {
     'html': {
         'head': {
@@ -28,8 +30,7 @@ site_quantity = int(input('Сколько сайтов: '))
 
 for _ in range(site_quantity):
 
-    client_site = site.copy()  # TODO эта фукнция не обеспечивает копирования вложенных структур данных - используйте
-                               #  функцию deepcopy из модуля copy
+    client_site = copy.deepcopy(site)
 
     name_product = input('Введите название продукта для нового сайта: ')
     h2 = 'У нас самая низкая цена на {0}'.format(name_product)
@@ -40,4 +41,4 @@ for _ in range(site_quantity):
     for key, value in frame_site.items():
         print('Сайт для ', key, ':', sep='')
         print('site =', value)
-print(site)  # TODO как видите глобальная переменная изменилась, а этого допустить нельзя
+print(site)

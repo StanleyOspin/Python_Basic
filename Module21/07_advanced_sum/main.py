@@ -1,23 +1,19 @@
-def flexible_sum(numbers_sum, *some_data):
-    some_data = list(some_data)
-
+def flexible_sum(*some_data, numbers_sum=[]):
     for item in some_data:
         if isinstance(item, int):
             numbers_sum.append(item)
 
         else:
-            item = flexible_sum(numbers_sum, *item)
+            item = flexible_sum(*item)
 
     return sum(numbers_sum)
 
 
-numbers_sum = []
-numbers_sum = flexible_sum(numbers_sum, [[1, 2, [3]], [1], 3])
-# numbers_sum = flexible_sum(numbers_sum, 1, 2, 3, 4, 5)
-print(numbers_sum)
+print(flexible_sum([[1, 2, [3]], [1], 3]))
+print(flexible_sum(1, 2, 3, 4, 5))
 
 
-# TODO другой вариант решения:
+# Спасибо, разобрался. В своем коде тоже подкорректировал
 def my_sum(*args):
     total_sum = 0
     for i_elem in args:
@@ -28,3 +24,7 @@ def my_sum(*args):
                 total_sum += my_sum(x)
 
     return total_sum
+
+
+print(my_sum([[1, 2, [3]], [1], 3]))
+print(my_sum(1, 2, 3, 4, 5))
