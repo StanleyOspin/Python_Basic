@@ -1,39 +1,40 @@
+import os
 import random
 
 
-def f(x, y):
+def function_1(x, y):
     x += random.randint(0, 10)
+
     y += random.randint(0, 5)
+
     return x / y
 
 
-def f2(x, y):
+def function_2(x, y):
     x -= random.randint(0, 10)
+
     y -= random.randint(0, 5)
+
     return y / x
 
 
-try:
-    file = open('coordinates.txt', 'r')
-    for line in file:
-        nums_list = line.split()
-        res1 = f(int(nums_list[0]), int(nums_list[1]))
+file_path_coordinates = os.path.abspath('coordinates.txt')
+file_path_result = os.path.abspath('result.txt')
+
+with open(file_path_coordinates, 'r') as coordinates_file:
+    for i_line in coordinates_file:
         try:
-            res2 = f2(int(nums_list[0]), int(nums_list[1]))
-            try:
-                number = random.randint(0, 100)
-                file_2 = open('result.txt', 'w')
-                my_list = sorted([res1, res2, number])
-                file_2.write(' '.join(my_list))
-            except Exception:
-                print("Что-то пошло не так")
-        except Exception:
-            print("Что-то пошло не так со второй функцией")
-        finally:
-            file.close()
-            file_2.close()
-except Exception:
-    print("Что-то пошло не так с первой функцией")
+            nums_list = i_line.split()
+            res_1 = function_1(int(nums_list[0]), int(nums_list[1]))
+            res_2 = function_2(int(nums_list[0]), int(nums_list[1]))
+            number = random.randint(0, 100)
+            file_result = open(file_path_result, 'a')
+            my_list = sorted([res_1, res_2, number])
+            file_result.write(' '.join([str(i) for i in my_list]) + '\n')
 
-
-# TODO отредактировать и исправить программу
+        except SyntaxError:
+            print('Ошибка синтаксиса')
+        except ZeroDivisionError:
+            print('На ноль делить нельзя')
+        except TypeError:
+            print('В файл можно записывать только строки')
