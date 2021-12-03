@@ -57,3 +57,5 @@ with open(PATH_TO_CALC, 'r') as calc_file:
                 string = string_validation(i_line)
                 total_sum += calculation(string)
     print('Сумма: ', total_sum)
+
+
