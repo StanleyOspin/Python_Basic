@@ -1,47 +1,59 @@
 import os
 
+PATH_TO_CALC = os.path.abspath('calc.txt')
 
-def calculation(i_line):
-    # TODO если в i_line пустая строка надо вернуть 0
-    if i_line[1] == '//':
-        result = int(i_line[0]) // int(i_line[2])
-    if i_line[1] == '/':
-        result = int(i_line[0]) / int(i_line[2])
-    elif i_line[1] == '*':
-        result = int(i_line[0]) * int(i_line[2])
-    elif i_line[1] == '+':
-        result = int(i_line[0]) + int(i_line[2])
-    elif i_line[1] == '-':
-        result = int(i_line[0]) - int(i_line[2])
-    elif i_line[1] == '%':
-        result = int(i_line[0]) % int(i_line[2])
+total_sum = 0
+count = 0
+
+
+def string_validation(i_line):
+    operators = ('//', '/', '*', '+', '-', '%')
+    string = i_line.split()
+    if not string[0].isdigit():
+        raise ValueError
+    elif not string[1] in operators:
+        raise ValueError
+    elif not string[2].isdigit():
+        raise ValueError
+    else:
+        return string
+
+
+def calculation(string):
+    if string[1] == '//':
+        result = int(string[0]) // int(string[2])
+    if string[1] == '/':
+        result = int(string[0]) / int(string[2])
+    elif string[1] == '*':
+        result = int(string[0]) * int(string[2])
+    elif string[1] == '+':
+        result = int(string[0]) + int(string[2])
+    elif string[1] == '-':
+        result = int(string[0]) - int(string[2])
+    elif string[1] == '%':
+        result = int(string[0]) % int(string[2])
+    elif not string:
+        result = 0
 
     return result
 
 
-total_sum = 0
-count = 0
-cursor = 0
-path_to_calc = os.path.abspath('calc.txt')
-with open(path_to_calc, 'r') as calc_file:
+with open(PATH_TO_CALC, 'r') as calc_file:
     for i_line in calc_file:
-        # TODO нужно пропускать пустые строки
-        count += 1
-        string = i_line.split()
-
+        if i_line == 0:
+            raise IndexError
         try:
+            count += 1
+            string = string_validation(i_line)
             total_sum += calculation(string)
-        except (ZeroDivisionError, UnboundLocalError, IndexError):
-            print('Обнаружена ошибка в строке №{0}:'.format(count), i_line)
 
+        except IndexError:
+            continue
+        except ValueError:
+            print('Обнаружена ошибка в строке №{0}:'.format(count), i_line)
             request = input('Хотите исправить? ')
             if request == 'да':
-                correct_string = input('Введите исправленную строку: ')
-
-                with open(path_to_calc, 'a') as calc_file:
-                    calc_file.write('\n' + str(correct_string))
-                # TODO а) это не требуется заданием, а требуется добавить результат исправленной строк и в total_sum
-                #  б) что если новое выражение будет с ошибкой? создайте функцию которая принимает строку из файла и,
-                #  если она валидна возвращает её, или если не валидна запрашивает в цикле пользователя пока он либо не
-                #  введет валидную замену либо если он откажется - возвращает пустую строку
+                i_line = input('Введите исправленную строку: ')
+                string = string_validation(i_line)
+                total_sum += calculation(string)
     print('Сумма: ', total_sum)
