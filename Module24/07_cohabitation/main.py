@@ -1,7 +1,7 @@
 from random import randint
 
 
-class Human(): # TODO Аналогично предыдущему
+class Human:
 
     def __init__(self, name):
         self.name = name
@@ -34,7 +34,7 @@ class Human(): # TODO Аналогично предыдущему
         else:
             print('Денег нет')
 
-    def life(self):  # TODO лучше назвать "действовать" (act)
+    def act(self):
         if self.fullness <= 0:
             print('{} умер.'.format(self.name))
             return
@@ -75,6 +75,6 @@ for character in characters:
 for day in range(1, 21):
     print('=============== день {} ================'.format(day))
     for character in characters:
-        character.life()
+        character.act()
         print(character)
         print(home)

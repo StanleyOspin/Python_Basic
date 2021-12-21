@@ -7,12 +7,9 @@ class Parents:
         self.parent_name = name
         self.parent_age = age
         self.children = children
-
-    def check_age(self):  # TODO данную проверку логичнее делать непосредственно в __init__, иначе детей "присвоили",
-                          #  а они могут быть, допустим, старше родителя :)
         for child in self.children:
             if self.parent_age - child.child_age < 16:
-                raise ValueError('Разница в возресте родителя и ребенка должна быть не менее 16 лет.')
+                raise ValueError('Разница в возрасте родителя и ребенка должна быть не менее 16 лет.')
 
     def children_quantity(self):
         return len(self.children)
@@ -57,4 +54,3 @@ class Child:
         self.child_age = child_age
         self.calmness = randint(0, 4)
         self.hunger = randint(0, 4)
-

@@ -1,4 +1,5 @@
 class Water:
+    name = 'Вода'
 
     def __add__(self, other):
         if isinstance(other, Fire):
@@ -7,6 +8,9 @@ class Water:
             return Dirt()
         elif isinstance(other, Air):
             return Storm
+
+    def __str__(self):
+        return Water.name
 
 
 class Fire:
@@ -24,7 +28,9 @@ class Fire:
         return Fire.name
 
 
-class Earth():  # TODO скобки не нужны
+class Earth:
+    name = 'Земля'
+
     def __add__(self, other):
         if isinstance(other, Water):
             return Dirt()
@@ -33,8 +39,11 @@ class Earth():  # TODO скобки не нужны
         elif isinstance(other, Fire):
             return Lava()
 
+    def __str__(self):
+        return Earth.name
 
-class Air():  # TODO скобки не нужны
+
+class Air:
     name = 'Воздух'
 
     def __add__(self, other):
@@ -50,11 +59,16 @@ class Air():  # TODO скобки не нужны
 
 
 class Wood:
+    name = 'Дерево'
+
     def __add__(self, other):
         if isinstance(other, Fire):
             return Coal()
         elif isinstance(other, Earth):
             return Forest()
+
+    def __str__(self):
+        return Wood.name
 
 
 class Steam:
@@ -66,11 +80,19 @@ class Steam:
 
 
 class Dirt:
+    name = 'Грязь'
     answer = 'Грязь'
+
+    def __str__(self):
+        return Dirt.name
 
 
 class Storm:
+    name = 'Шторм'
     answer = 'Шторм'
+
+    def __str__(self):
+        return Storm.name
 
 
 class Lightning:
@@ -82,32 +104,42 @@ class Lightning:
 
 
 class Lava:
+    name = 'Лава'
     answer = 'Лава'
+
+    def __str__(self):
+        return Lava.name
 
 
 class Dust:
+    name = 'Пыль'
     answer = 'Пыль'
+
+    def __str__(self):
+        return Dust.name
 
 
 class Coal:
+    name = 'Уголь'
     answer = 'Уголь'
+
+    def __str__(self):
+        return Coal.name
 
 
 class Forest:
+    name = 'Лес'
     answer = 'Лес'
 
+    def __str__(self):
+        return Forest.name
 
-air = Air()  # TODO называйте переменные полными словами
+
+air = Air()
 fire = Fire()
-c = Earth()
-d = Water()
-e = Wood()
-result = air + fire
+earth = Earth()
+water = Water()
+wood = Wood()
+result = air + water
 
-if not result:
-    print(e)
-else:
-    print(result.answer)
-
-# TODO Пример вывода:
-print(f'{air} + {fire} = {result}')
+print(f'{air} + {water} = {result}')

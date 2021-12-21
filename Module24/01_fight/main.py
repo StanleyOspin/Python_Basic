@@ -8,15 +8,15 @@ while True:
 
     who_is_attack = random.randint(1, 2)
     if who_is_attack == 1:
-        warrior_2.isattacked()
+        warrior_1.fight(warrior_2)
         print('Атаковал {} , у {} осталось {} единиц здоровья'.format('воин 1 ', 'воина 2', warrior_2.health))
-        if not Warrior.health_level(warrior_2):
+        if Warrior.health_level(warrior_2):
             print('Игра окончена, победил {}'.format('воин 1 '))
             break
 
     else:
-        warrior_1.isattacked()
+        warrior_2.fight(warrior_1)
         print('Атаковал {} , у {} осталось {} единиц здоровья'.format('воин 2 ', 'воина 1', warrior_1.health))
-        if not Warrior.health_level(warrior_1):
+        if Warrior.health_level(warrior_1):
             print('Игра окончена, победил {}'.format('воин 2'))
             break

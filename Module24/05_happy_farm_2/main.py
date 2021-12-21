@@ -42,19 +42,19 @@ class PotatoGarden:
         self.potatoes = []
 
 
-class Gardener():  # TODO скобки не нужны если не указываем базовый класс
+class Gardener:
 
-    def __init__(self, name, potatogarden):  # TODO между словами ставьте подчеркивание
+    def __init__(self, name, potato_garden):
         self.name = name
-        self.potatogarden = potatogarden
+        self.potato_garden = potato_garden
 
     def care_of_potatoes(self):
 
-        if all([i_potato.state == 0 or i_potato.state == 1 for i_potato in self.potatogarden]):
+        if all([i_potato.state == 0 or i_potato.state == 1 for i_potato in self.potato_garden]):
             print('{} поливает картошку!\n'.format(self.name))
             my_garden.grow_all()
 
-        elif all([i_potato.state == 2 for i_potato in self.potatogarden]):
+        elif all([i_potato.state == 2 for i_potato in self.potato_garden]):
             print('{} окучивает картошку!\n'.format(self.name))
             my_garden.grow_all()
 

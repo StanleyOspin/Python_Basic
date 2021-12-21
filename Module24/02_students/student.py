@@ -7,9 +7,7 @@ class Student:
         self.marks = marks
 
     def rating(self):
-        self.rating = sum(self.marks) / len(self.marks)
-        # TODO атрибут elf.rating не нужен, есть вероятность забыть обновить значение если список оценок изменится
-        return self.rating  # TODO перенесите выражение сюда
+        return sum(self.marks) / len(self.marks)
 
     def __str__(self):
         return '{} {} {} {}'.format(self.surname, self.name, self.num_of_group, self.rating)

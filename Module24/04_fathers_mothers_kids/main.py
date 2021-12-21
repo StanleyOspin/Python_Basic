@@ -16,7 +16,6 @@ def child_input():
 children = [Child(*child_input()) for child in range(child_count)]
 
 parent.children = children
-parent.check_age()
 parent.print_info()
 for hour in range(living_hours):
     parent.child_make_calm()
