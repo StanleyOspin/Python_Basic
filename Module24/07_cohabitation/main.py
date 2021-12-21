@@ -1,7 +1,7 @@
 from random import randint
 
 
-class Human():
+class Human(): # TODO Аналогично предыдущему
 
     def __init__(self, name):
         self.name = name
@@ -34,7 +34,7 @@ class Human():
         else:
             print('Денег нет')
 
-    def life(self):
+    def life(self):  # TODO лучше назвать "действовать" (act)
         if self.fullness <= 0:
             print('{} умер.'.format(self.name))
             return

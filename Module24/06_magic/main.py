@@ -10,6 +10,8 @@ class Water:
 
 
 class Fire:
+    name = 'Огонь'
+
     def __add__(self, other):
         if isinstance(other, Water):
             return Steam()
@@ -18,8 +20,11 @@ class Fire:
         elif isinstance(other, Earth):
             return Lava
 
+    def __str__(self):
+        return Fire.name
 
-class Earth():
+
+class Earth():  # TODO скобки не нужны
     def __add__(self, other):
         if isinstance(other, Water):
             return Dirt()
@@ -29,7 +34,9 @@ class Earth():
             return Lava()
 
 
-class Air():
+class Air():  # TODO скобки не нужны
+    name = 'Воздух'
+
     def __add__(self, other):
         if isinstance(other, Water):
             return Storm()
@@ -37,6 +44,9 @@ class Air():
             return Lightning()
         elif isinstance(other, Earth):
             return Dust()
+
+    def __str__(self):
+        return Air.name
 
 
 class Wood:
@@ -48,7 +58,11 @@ class Wood:
 
 
 class Steam:
+    name = 'Пар'
     answer = 'Пар'
+
+    def __str__(self):
+        return Steam.name
 
 
 class Dirt:
@@ -60,7 +74,11 @@ class Storm:
 
 
 class Lightning:
+    name = 'Молния'
     answer = 'Молния'
+
+    def __str__(self):
+        return Lightning.name
 
 
 class Lava:
@@ -79,14 +97,17 @@ class Forest:
     answer = 'Лес'
 
 
-a = Air()
-b = Fire()
+air = Air()  # TODO называйте переменные полными словами
+fire = Fire()
 c = Earth()
 d = Water()
 e = Wood()
-f = a + b
+result = air + fire
 
-if not f:
+if not result:
     print(e)
 else:
-    print(f.answer)
+    print(result.answer)
+
+# TODO Пример вывода:
+print(f'{air} + {fire} = {result}')

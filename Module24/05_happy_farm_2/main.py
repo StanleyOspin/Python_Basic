@@ -42,9 +42,9 @@ class PotatoGarden:
         self.potatoes = []
 
 
-class Gardener():
+class Gardener():  # TODO скобки не нужны если не указываем базовый класс
 
-    def __init__(self, name, potatogarden):
+    def __init__(self, name, potatogarden):  # TODO между словами ставьте подчеркивание
         self.name = name
         self.potatogarden = potatogarden
 
