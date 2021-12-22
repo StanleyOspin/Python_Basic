@@ -9,7 +9,7 @@ def user_input():
     return surname, name, num_of_group, marks
 
 
-students = [Student(*user_input()) for _ in range(10)]
+students = [Student(*user_input()) for _ in range(2)]
 students.sort(key=lambda x: x.rating())
 
 for student in students:
