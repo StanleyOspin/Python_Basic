@@ -10,5 +10,5 @@ class Student:
         return sum(self.marks) / len(self.marks)
 
     def __str__(self):
-        return '{} {} {} {}'.format(self.surname, self.name, self.num_of_group, self.rating)
-        # TODO забыли вызвать метод подсчёта среднего балла
+        return '{} {} {} {}'.format(self.surname, self.name, self.num_of_group, self.rating())
+

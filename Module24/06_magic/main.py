@@ -73,8 +73,6 @@ class Wood:
 
 class Steam:
     name = 'Пар'
-    answer = 'Пар'  # TODO оставил ваш атрибут только ради совместимости с существующим на тот момент основным кодом,
-                    #  но по сути данный атрибут не нужен, поэтому убирайте
 
     def __str__(self):
         return Steam.name
@@ -82,7 +80,6 @@ class Steam:
 
 class Dirt:
     name = 'Грязь'
-    answer = 'Грязь'
 
     def __str__(self):
         return Dirt.name
@@ -90,7 +87,6 @@ class Dirt:
 
 class Storm:
     name = 'Шторм'
-    answer = 'Шторм'
 
     def __str__(self):
         return Storm.name
@@ -98,7 +94,6 @@ class Storm:
 
 class Lightning:
     name = 'Молния'
-    answer = 'Молния'
 
     def __str__(self):
         return Lightning.name
@@ -106,7 +101,6 @@ class Lightning:
 
 class Lava:
     name = 'Лава'
-    answer = 'Лава'
 
     def __str__(self):
         return Lava.name
@@ -114,7 +108,6 @@ class Lava:
 
 class Dust:
     name = 'Пыль'
-    answer = 'Пыль'
 
     def __str__(self):
         return Dust.name
@@ -122,7 +115,6 @@ class Dust:
 
 class Coal:
     name = 'Уголь'
-    answer = 'Уголь'
 
     def __str__(self):
         return Coal.name
@@ -130,7 +122,6 @@ class Coal:
 
 class Forest:
     name = 'Лес'
-    answer = 'Лес'
 
     def __str__(self):
         return Forest.name
@@ -141,6 +132,6 @@ fire = Fire()
 earth = Earth()
 water = Water()
 wood = Wood()
-result = air + water
+result = air + earth
 
-print(f'{air} + {water} = {result}')
+print(f'{air} + {earth} = {result}')
