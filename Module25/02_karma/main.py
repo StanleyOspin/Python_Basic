@@ -1,4 +1,4 @@
-from random import randint, choice
+from random import randint
 from exceptions import *
 from buddhist import Buddhist
 
@@ -31,26 +31,54 @@ while True:
         day += 1
         buddhist.set_day(day)
 
-        if buddhist.get_karma() >= 500:
+        if buddhist.get_karma() == 500:
             print('Просветеление наступило на {} день'.format(buddhist.get_day()))
-
             break
 
-    except (KillError, DrunkError, CarCrashError, GluttonyError, DepressionError):
-
+    except KillError:
         with open('karma_log', 'a', encoding='utf-8') as file:
-            if KillError:
-                karma = buddhist.set_karma(buddhist.get_karma() - KillError.minus_to_karma)
-                file.write('День ' + str(buddhist.get_day()) + '\n') #не могу понять как вывести сообщение из класса exception
-            elif DrunkError:
-                karma = buddhist.set_karma(buddhist.get_karma() - DrunkError.minus_to_karma)
-                file.write('День ' + str(buddhist.get_day()) + '\n')#не могу понять как вывести сообщение из класса exception
-            elif CarCrashError:
-                karma = buddhist.set_karma(buddhist.get_karma() - CarCrashError.minus_to_karma)
-                file.write('День ' + str(buddhist.get_day()) + '\n')#не могу понять как вывести сообщение из класса exception
-            elif GluttonyError:
-                karma = buddhist.set_karma(buddhist.get_karma() - GluttonyError.minus_to_karma)
-                file.write('День ' + str(buddhist.get_day()) + '\n')#не могу понять как вывести сообщение из класса exception
-            elif DepressionError:
-                karma = buddhist.set_karma(buddhist.get_karma() - DepressionError.minus_to_karma)
-                file.write('День ' + str(buddhist.get_day()) + '\n')#не могу понять как вывести сообщение из класса exception
+            buddhist.set_karma(buddhist.get_karma() - KillError.minus_to_karma)
+            day = buddhist.get_day()
+            day += 1
+            buddhist.set_day(day)
+            file.write('День ' + str(buddhist.get_day()) + ' Убил комара, но он напал первым, минус {} к карме'.format(
+                KillError.minus_to_karma) + '\n')
+
+    except DrunkError:
+        with open('karma_log', 'a', encoding='utf-8') as file:
+            buddhist.set_karma(buddhist.get_karma() - DrunkError.minus_to_karma)
+            day = buddhist.get_day()
+            day += 1
+            buddhist.set_day(day)
+            file.write('День ' + str(
+                buddhist.get_day()) + ' День начался вроде бы неплохо, но на всякий случай... все же выпил, минус {} к карме.'.format(
+                DrunkError.minus_to_karma) + '\n')
+
+    except  CarCrashError:
+        with open('karma_log', 'a', encoding='utf-8') as file:
+            buddhist.set_karma(buddhist.get_karma() - CarCrashError.minus_to_karma)
+            day = buddhist.get_day()
+            day += 1
+            buddhist.set_day(day)
+            file.write('День ' + str(
+                buddhist.get_day()) + ' Полицейский приказал мне остановиться, и я въехал в столб, минус {}  карме.'.format(
+                CarCrashError.minus_to_karma) + '\n')
+    except GluttonyError:
+        with open('karma_log', 'a', encoding='utf-8') as file:
+            buddhist.set_karma(buddhist.get_karma() - GluttonyError.minus_to_karma)
+            day = buddhist.get_day()
+            day += 1
+            buddhist.set_day(day)
+            file.write('День ' + str(
+                buddhist.get_day()) + ' Иногда, если даже нельзя съесть прирожное, но очень хочется, то можно, минус {} к карме.'.format(
+                GluttonyError.minus_to_karma) + '\n')
+
+    except DepressionError:
+        with open('karma_log', 'a', encoding='utf-8') as file:
+            buddhist.set_karma(buddhist.get_karma() - DepressionError.minus_to_karma)
+            day = buddhist.get_day()
+            day += 1
+            buddhist.set_day(day)
+            file.write('День ' + str(
+                buddhist.get_day()) + ' Депрессия! Давно не виделись! Проходи! Чай, кофе или сразу водочки? Минус {} к карме.'.format(
+                DepressionError.minus_to_karma) + '\n')
