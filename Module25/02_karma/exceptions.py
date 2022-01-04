@@ -17,4 +17,4 @@ class GluttonyError(Exception):
 class DepressionError(Exception):
     minus_to_karma = 3
 
-    d
+
