@@ -7,8 +7,9 @@ buddhist = Buddhist()
 
 def one_day():
     dice = randint(1, 10)
-    if dice == 1:
-        raise KillError
+    if dice == 1:  # TODO а) используйте список объектов исключений и random.choice чтобы избавиться от if..eilf...
+                   #  б) это вероятность 1 к 2 (5 к 10), а нужна вероятность 1 к 10
+        raise KillError  # TODO указывайте поясняющие сообщения в круглых скобках, вспомните задачу 4 из модуля 23
     elif dice == 2:
         raise DrunkError
     elif dice == 3:
@@ -35,7 +36,8 @@ while True:
             print('Просветеление наступило на {} день'.format(buddhist.get_day()))
             break
 
-    except KillError:
+    except KillError:  # TODO обработка ислючений идентична, значить можно сделать её одной веткой как это делали в
+                       #  задаче 4 из модуля 23
         with open('karma_log', 'a', encoding='utf-8') as file:
             buddhist.set_karma(buddhist.get_karma() - KillError.minus_to_karma)
             day = buddhist.get_day()
