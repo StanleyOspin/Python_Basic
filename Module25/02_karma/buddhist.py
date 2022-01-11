@@ -1,7 +1,7 @@
 class Buddhist:
     def __init__(self):
         self.__karma = 0
-        self.__day = 1
+        self.__day = 0
 
     def get_karma(self):
         return self.__karma

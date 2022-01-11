@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, choice
 from exceptions import *
 from buddhist import Buddhist
 
@@ -6,18 +6,17 @@ buddhist = Buddhist()
 
 
 def one_day():
+    exceptions = [KillError('Убил комара, но он напал первым, минус 10 к карме.'),
+                  DrunkError('День начался вроде бы неплохо, но на всякий случай... все же выпил, минус 5 к карме.'),
+                  CarCrashError('Полицейский приказал мне остановиться, и я въехал в столб, минус 5  карме.'),
+                  GluttonyError(
+                      'Иногда, если даже нельзя съесть пирожное, но очень хочется, то можно, минус 5 к карме.'),
+                  DepressionError(
+                      'Депрессия! Давно не виделись! Проходи! Чай, кофе или сразу водочки? Минус 15 к карме.')]
+    r_choice = choice(exceptions)
     dice = randint(1, 10)
-    if dice == 1:  # TODO а) используйте список объектов исключений и random.choice чтобы избавиться от if..eilf...
-                   #  б) это вероятность 1 к 2 (5 к 10), а нужна вероятность 1 к 10
-        raise KillError  # TODO указывайте поясняющие сообщения в круглых скобках, вспомните задачу 4 из модуля 23
-    elif dice == 2:
-        raise DrunkError
-    elif dice == 3:
-        raise CarCrashError
-    elif dice == 4:
-        raise GluttonyError
-    elif dice == 5:
-        raise DepressionError
+    if dice == 9:
+        raise r_choice
     else:
         return randint(1, 7)
 
@@ -36,48 +35,14 @@ while True:
             print('Просветеление наступило на {} день'.format(buddhist.get_day()))
             break
 
-    except KillError:  # TODO обработка ислючений идентична, значить можно сделать её одной веткой как это делали в
-                       #  задаче 4 из модуля 23
+    except (KillError, DrunkError, CarCrashError, GluttonyError,
+            DepressionError) as exc:
+
         with open('karma_log', 'a', encoding='utf-8') as file:
             buddhist.set_karma(buddhist.get_karma() - KillError.minus_to_karma)
             day = buddhist.get_day()
             day += 1
             buddhist.set_day(day)
-            file.write('День: {}.  Убил комара, но он напал первым, минус {} к карме' \
-                       .format(buddhist.get_day(), KillError.minus_to_karma) + '\n')
+            error_message = f'День: {buddhist.get_day()}. {exc.__class__.__name__} - {exc}'
 
-    except DrunkError:
-        with open('karma_log', 'a', encoding='utf-8') as file:
-            buddhist.set_karma(buddhist.get_karma() - DrunkError.minus_to_karma)
-            day = buddhist.get_day()
-            day += 1
-            buddhist.set_day(day)
-            file.write('День: {}. День начался вроде бы неплохо, но на всякий случай... все же выпил, минус {} к карме.' \
-                       .format(buddhist.get_day(), DrunkError.minus_to_karma) + '\n')
-
-    except  CarCrashError:
-        with open('karma_log', 'a', encoding='utf-8') as file:
-            buddhist.set_karma(buddhist.get_karma() - CarCrashError.minus_to_karma)
-            day = buddhist.get_day()
-            day += 1
-            buddhist.set_day(day)
-            file.write('День: {}. Полицейский приказал мне остановиться, и я въехал в столб, минус {}  карме.' \
-                       .format(buddhist.get_day(), CarCrashError.minus_to_karma) + '\n')
-    except GluttonyError:
-        with open('karma_log', 'a', encoding='utf-8') as file:
-            buddhist.set_karma(buddhist.get_karma() - GluttonyError.minus_to_karma)
-            day = buddhist.get_day()
-            day += 1
-            buddhist.set_day(day)
-            file.write(
-                'День: {}. Иногда, если даже нельзя съесть прирожное, но очень хочется, то можно, минус {} к карме.' \
-                .format(buddhist.get_day(), GluttonyError.minus_to_karma) + '\n')
-
-    except DepressionError:
-        with open('karma_log', 'a', encoding='utf-8') as file:
-            buddhist.set_karma(buddhist.get_karma() - DepressionError.minus_to_karma)
-            day = buddhist.get_day()
-            day += 1
-            buddhist.set_day(day)
-            file.write('День: {}. Депрессия! Давно не виделись! Проходи! Чай, кофе или сразу водочки? Минус {} к карме.' \
-                       .format(buddhist.get_day(), DepressionError.minus_to_karma) + '\n')
+            file.write(error_message + '\n')
