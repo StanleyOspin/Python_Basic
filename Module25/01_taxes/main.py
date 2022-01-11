@@ -14,8 +14,6 @@ class Property:
 
 
 class Appartment(Property):
-    def __init__(self, worth):  # TODO если логику базового метода не изменяем, то и переопределять не надо - убирайте
-        super().__init__(worth)
 
     def tax_calculation(self):
         self.tax = self.get_worth() / 1000
