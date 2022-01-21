@@ -9,6 +9,8 @@ class Auto:
     def move(self, dist):
         self.__x = self.__x + dist * cos(self.__angle)
         self.__y = self.__y + dist * sin(self.__angle)
+        # TODO хорошей практикой является объявление всех используемых атрибутов экземпляра класса в методе __init__
+        #  тоже , присвойте им (инициализируйте) некие начальные значения, например 0
 
     def __str__(self):
         return f'Текущие координаты автомобиля: x = {self.__x}, y = {self.__y}'
@@ -16,7 +18,7 @@ class Auto:
     def set_coordinates(self, x, y, angle):
         self.__x = x
         self.__y = y
-        self.__angle = angle
+        self.__angle = angle  # TODO и этот атрибут не забыть объявить и в __init__
 
     def get_x(self):
         return self.__x

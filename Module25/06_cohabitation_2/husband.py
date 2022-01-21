@@ -86,6 +86,8 @@ class Husband(FamilyMember):
 
     def act(self):
         super().act()
+        # TODO для мужа также базовым действием не зависящим от случайностей должно быть зарабатывание денег, это
+        #  критически важный ресурс для семьи
         dice = randint(1, 6)
         if self.__happiness < 10:
             print('{} умер от депрессии.'.format(self.get_name()))
