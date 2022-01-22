@@ -1,5 +1,5 @@
 from familymember import FamilyMember
-from random import randint
+from random import randint, choice
 
 
 class Wife(FamilyMember):
@@ -17,6 +17,9 @@ class Wife(FamilyMember):
 
     def set_happiness(self, happiness):
         self.__happiness = happiness
+
+    def get_furcoat(self):
+        return self.__fur_coat
 
     def eat(self):
 
@@ -39,6 +42,38 @@ class Wife(FamilyMember):
         else:
             print('{} из-за голода не смогла привести дом в порядок.'.format(self.get_name()))
 
+    def buy_food(self):
+        meal = (30, 40, 50, 60)
+        meal_amount = choice(meal)
+        if self.get_fullness() >= 10:
+            if self.home.get_money() >= meal_amount:
+                self.set_fullness(self.get_fullness() - 10)
+                self.home.set_money(self.home.get_money() - meal_amount)
+                self.home.set_food(self.home.get_food() + meal_amount)
+                print('{} купила еды'.format(self.get_name()))
+
+            elif meal_amount > self.home.get_money() > 0:
+                self.set_fullness(self.get_fullness() - 10)
+                self.home.set_money(0)
+                self.home.set_food(self.home.get_money())
+            else:
+                print('Денег на еду нет')
+
+        else:
+            print('{} пошла купить еды, но не хватило сытости до магазина не дошла.'.format(self.get_name()))
+
+    def buy_catfood(self):
+        if self.get_fullness() >= 10:
+            if self.home.get_money() >= 10:
+                self.set_fullness(self.get_fullness() - 10)
+                self.home.set_money(self.home.get_money() - 10)
+                self.home.set_catfood(self.home.get_catfood() + 10)
+                print('{} купила еды для кота'.format(self.get_name()))
+            else:
+                print('Денег на корм для кота нет')
+        else:
+            print('{} пошла купить еды для кота, но была сильно голодна до магазина не дошла.'.format(self.get_name()))
+
     def buy_furcoat(self):
         if self.get_fullness() >= 10:
             if self.home.get_money() >= 400:
@@ -50,6 +85,8 @@ class Wife(FamilyMember):
             else:
                 print(
                     '{} хотела купить шубу, но денег маловато, шубу не берем, накопим деньжат.'.format(self.get_name()))
+                print('Для поднятия настроения можно хотя бы кота погладить')
+                self.pet_a_cat()
         else:
             print('{} хотела купить шубу, сейчас за гамбургер отдала бы все деньги, шуба подождет.'.format(
                 self.get_name()))
@@ -66,17 +103,26 @@ class Wife(FamilyMember):
     def act(self):
         super().act()
         dice = randint(1, 6)
-        if self.__happiness < 10:
-            print('{} умерла от депрессии.'.format(self.get_name()))
-        elif self.__happiness < 50:
-            self.pet_a_cat()
+        if self.home.get_food() < 50:
+            self.buy_food()
+        elif self.home.get_catfood() < 30:
+            self.buy_catfood()
         elif self.home.get_dirt() > 150:
             self.cleanning()
-        elif self.home.get_dirt() >= 90:
-            self.__happiness -= 10
+        elif self.__happiness < 50:
+            self.buy_furcoat()
+        elif self.__happiness < 10:
+            print('{} умерла от депрессии.'.format(self.get_name()))
+
         elif dice == 1:
             self.cleanning()
         elif dice == 2:
             self.pet_a_cat()
         elif dice == 3:
             self.buy_furcoat()
+        elif dice == 4:
+            self.buy_food()
+        elif dice == 5:
+            self.buy_catfood()
+        elif self.home.get_dirt() >= 90:
+            self.__happiness -= 10

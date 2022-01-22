@@ -3,22 +3,26 @@ from math import cos, sin
 
 class Auto:
 
-    def __init__(self, x, y, angle):
-        self.set_coordinates(x, y, angle)
+    def __init__(self, x=0, y=0, angle=0):
+        self.set_x(x)
+        self.set_y(y)
+        self.set_angle(angle)
 
     def move(self, dist):
         self.__x = self.__x + dist * cos(self.__angle)
         self.__y = self.__y + dist * sin(self.__angle)
-        # TODO хорошей практикой является объявление всех используемых атрибутов экземпляра класса в методе __init__
-        #  тоже , присвойте им (инициализируйте) некие начальные значения, например 0
 
     def __str__(self):
         return f'Текущие координаты автомобиля: x = {self.__x}, y = {self.__y}'
 
-    def set_coordinates(self, x, y, angle):
+    def set_x(self, x):
         self.__x = x
+
+    def set_y(self, y):
         self.__y = y
-        self.__angle = angle  # TODO и этот атрибут не забыть объявить и в __init__
+
+    def set_angle(self, angle):
+        self.__angle = angle
 
     def get_x(self):
         return self.__x

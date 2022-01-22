@@ -19,7 +19,7 @@ class Cat(FamilyMember):
             self.eaten_cat_food += self.home.get_catfood()
             print('{} поел.'.format(self.get_name()))
         else:
-            print('Корм для кота закончился')
+            print('Корм для кота закончился, не поел')
 
     def sleep(self):
         if self.get_fullness() >= 10:

@@ -36,7 +36,7 @@ class FamilyMember:
         if self.home.get_food() >= meal_amount:
             self.__fullness += meal_amount
             self.home.set_food(self.home.get_food() - meal_amount)
-            self.__eaten += meal_amount
+            self.__eaten = meal_amount
             return True
 
         elif meal_amount > self.home.get_food() > 0:
@@ -49,7 +49,7 @@ class FamilyMember:
             return False
 
     def act(self):
-        if self.__fullness < 0:
+        if self.__fullness <= 0:
             print('{} - степень голода критическая, наступила смерть.'.format(self.__name))
 
         elif self.get_fullness() < 20:
