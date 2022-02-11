@@ -1,4 +1,4 @@
-numbers = [10]
+numbers = [10, 11]
 
 
 def my_for(numbers):
