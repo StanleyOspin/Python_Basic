@@ -1,5 +1,5 @@
 import os
-from collections.abc import Iterable
+from typing import Iterable
 
 
 def gen_rows(link: str) -> Iterable[int]:

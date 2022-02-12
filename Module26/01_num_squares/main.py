@@ -1,14 +1,14 @@
-from collections.abc import Iterable
+from typing import Iterable
 
 
 # version 1
-class My_Iterator:
+class My_Iterator:  # TODO Имя класса пишется КэмелКейсом
     def __init__(self, limit: int) -> None:
         self.__number = 0
         self.__limit = limit
 
     def __iter__(self) -> Iterable[int]:
-        self.number = 1
+        self.number = 1  # TODO да, тут надо переинициализировать, но только имя атрибута другое
         return self
 
     def __next__(self) -> int:
@@ -20,6 +20,9 @@ class My_Iterator:
 
 
 squares = My_Iterator(10)
+for item in squares:
+    print(item, end=' ')
+print('\nПовторное использование итератора:')
 for item in squares:
     print(item, end=' ')
 
