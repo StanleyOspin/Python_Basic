@@ -2,13 +2,13 @@ from typing import Iterable
 
 
 # version 1
-class My_Iterator:  # TODO Имя класса пишется КэмелКейсом
+class MyIterator:
     def __init__(self, limit: int) -> None:
         self.__number = 0
         self.__limit = limit
 
     def __iter__(self) -> Iterable[int]:
-        self.number = 1  # TODO да, тут надо переинициализировать, но только имя атрибута другое
+        self.__number = 0
         return self
 
     def __next__(self) -> int:
@@ -19,7 +19,7 @@ class My_Iterator:  # TODO Имя класса пишется КэмелКейс
             raise StopIteration
 
 
-squares = My_Iterator(10)
+squares = MyIterator(10)
 for item in squares:
     print(item, end=' ')
 print('\nПовторное использование итератора:')
