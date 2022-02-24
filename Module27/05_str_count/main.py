@@ -4,15 +4,17 @@ import functools
 
 def counter(function: Callable) -> Callable:
     'Декоратор, считающий и выводящий количество вызовов декорируемой функции.'
+    # TODO Аналогично предыдущему
     function.__invocation_count__ = 0
 
     @functools.wraps(function)
     def wrapper(*args, **kwargs) -> Any:
-        function.__invocation_count__ += 1
+        function.__invocation_count__ += 1  # TODO лучше используйте wrapper.count
         result = function(*args, **kwargs)
         print('{} была вызвана: {} раз(а)'.format(function.__name__, function.__invocation_count__))
         return result
 
+    # TODO а тут инициализируйте wrapper.count нулём
     return wrapper
 
 

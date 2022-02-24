@@ -4,8 +4,9 @@ from typing import Iterable
 class QHofstadter:
     def __init__(self, numbers: list) -> None:
         self.sequence = numbers[:]
-        if self.sequence == [1, 2]:
-            raise StopIteration
+        if self.sequence == [1, 2]:  # TODO точнее толькой [1, 1] верная последовательность, это надо проверить
+            raise StopIteration  # TODO Добавьте поясняющее сообщение в круглых скобках: "Невалидная исходная
+                                 #  последовательность"
 
     def __iter__(self):
         return self

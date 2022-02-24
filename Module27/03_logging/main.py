@@ -5,12 +5,12 @@ import datetime
 
 def logging(function: Callable) -> Callable:
     'logging это функция - декоратор, которая отвечает за логирование декорируемых функций.'
-
+    # TODO Аналогично предыдущему
     @functools.wraps(function)
     def wrapper(*args, **kwargs) -> Any:
         try:
             result = function(*args, **kwargs)
-            print(result)
+            print(result)  # TODO это значение надо возвращать с помощью return
         except Exception as error:
             now = datetime.datetime.now()
             dt = now.strftime("%d/%m/%Y, %H:%M:%S")
@@ -25,6 +25,7 @@ def logging(function: Callable) -> Callable:
 def squares(number: int) -> str:
     'squares - это функция, которая находит и возвращает сумму квадратов для каждого числа number' \
     'в диапазоне от 0 до 1000'
+    # TODO Аналогично предыдущему
     square_sum = 0
     for _ in range(number):
         square_sum += sum([number ** 2 for number in range(1000)])
@@ -33,9 +34,10 @@ def squares(number: int) -> str:
 
 
 @logging
-def division(value_1: int, value_2: int) -> int:
+def division(value_1: int, value_2: int) -> int:  # TODO измените на float
     'division - это функция деления одного целого числа на другое целое число.'
-    return value_1 / value_2
+    # TODO Аналогично предыдущему
+    return value_1 / value_2  # TODO результат этого оператора деления всегда типа float
 
 
 squares(10)

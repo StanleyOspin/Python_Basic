@@ -4,6 +4,8 @@ import functools
 
 def how_are_you(function: Callable) -> Callable:
     'how_are_you - это функция - декоратор, который Ваня написал от скуки'
+    # TODO Докстриниги делаются в строенными двойными кавычками, пример:
+    # """how_are_you - это функция - декоратор, который Ваня написал от скуки"""
 
     @functools.wraps(function)
     def wrapper(*args, **kwargs) -> Any:
@@ -11,7 +13,7 @@ def how_are_you(function: Callable) -> Callable:
         if question:
             print('А у меня не очень! Ладно, держи свою функцию.')
             result = function(*args, **kwargs)
-            print(result)
+            print(result)  # TODO это значение надо возвращать с помощью return
 
     return wrapper
 
@@ -20,6 +22,8 @@ def how_are_you(function: Callable) -> Callable:
 def squares(number: int) -> str:
     'squares - функция находит и возвращает сумму квадратов для каждого числа number'\ 
     'в диапазоне от 0 до 1000.'
+    # TODO Аналогично предыдущему
+
     square_sum = 0
     for _ in range(number):
         square_sum += sum([number ** 2 for number in range(1000)])
