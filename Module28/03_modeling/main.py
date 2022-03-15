@@ -1,5 +1,6 @@
 import math
 from abc import ABC, abstractmethod
+from typing import Optional
 
 
 class Figure(ABC):
@@ -67,46 +68,50 @@ class Square(Figure):
         return perimeter
 
 
-class Cube(Square):
+class Area3DMixin:
+    def cube_square_calculation(self):
+        total_square = 0
+        for side in self.sides:  # TODO Наличие в классах объёмных фигур атрибута self.sides считается договорённостью
+            total_square += side.square_of_figure()
+        return total_square
+
+
+class Cube(Area3DMixin, Square):
     """Класс Cube, родительский класс Square"""
 
     def __init__(self, base: int) -> None:
         super().__init__(base)
-        self.__square_cube = [Square.square_of_figure(self) for _ in range(6)]
-
-    def cube_square_calculation(self):
-        total_square = 0
-        for square in self.__square_cube:
-            total_square += square
-        return total_square
+        # self.__square_cube = [Square.square_of_figure(self) for _ in range(6)]
+        self.sides = [Square(base) for _ in range(6)]
 
     def __str__(self):
-        return 'Total square of cube = {}'.format(self.cube_square_calculation())
+        return 'Total square of cube = {}'.format(self.square_of_figure())
 
 
-class Pyramid(Triangle):
+class Pyramid(Area3DMixin, Triangle):
     """Класс Pyramid, родительский класс Triangle"""
 
     def __init__(self, height: int, base: int) -> None:
         super().__init__(height, base)
-        self.__pyramid_square = [Triangle.square_of_figure(self) if i < 4 else self.base_square() for i in range(5)]
+        # self.__pyramid_square = [Triangle.square_of_figure(self) if i < 4 else self.base_square() for i in range(5)]
+        self.sides: [Triangle, Square] = [Triangle(height, base) for _ in range(4)] + [Square(base), ]
+    # def base_square(self) -> int:
+    #     base_square = self.base ** 2
+    #     return base_square
 
-    def base_square(self) -> int:
-        base_square = self.base ** 2
-        return base_square
-
-    def pyramid_square_calculation(self) -> int:
-        total_square = 0
-        for surface in self.__pyramid_square:
-            total_square += surface
-        return total_square
+    # def pyramid_square_calculation(self) -> int:
+    #     total_square = 0
+    #     for surface in self.__pyramid_square:
+    #         total_square += surface
+    #     return total_square
 
     def __str__(self):
-        return 'Total square of pyramid = {}'.format(self.pyramid_square_calculation())
+        return 'Total square of pyramid = {}'.format(self.square_of_figure())
 
 
 cube = Cube(base=5)
-print(cube.__str__())
+print(cube)  # TODO Вот так это работает
+# print(cube.__str__())
 
 pyramid = Pyramid(height=5, base=5)
 print(pyramid.__str__())

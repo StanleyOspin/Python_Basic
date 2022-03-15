@@ -11,7 +11,7 @@ class Date:
 
     @classmethod
     def parse_date_string(cls, date_str: str) -> map:
-        return (map(int, date_str.split('-')))
+        return (map(int, date_str.split('-')))  # TODO внешние скобки излишни
 
     @classmethod
     def from_string(cls, date_str: str) -> object:
