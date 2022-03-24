@@ -71,7 +71,7 @@ class Square(Figure):
 class Area3DMixin:
     def cube_square_calculation(self):
         total_square = 0
-        for side in self.sides:  # TODO Наличие в классах объёмных фигур атрибута self.sides считается договорённостью
+        for side in self.sides:  # Спасибо, не знал, что существует такое правило
             total_square += side.square_of_figure()
         return total_square
 
@@ -94,7 +94,7 @@ class Pyramid(Area3DMixin, Triangle):
     def __init__(self, height: int, base: int) -> None:
         super().__init__(height, base)
         # self.__pyramid_square = [Triangle.square_of_figure(self) if i < 4 else self.base_square() for i in range(5)]
-        self.sides: [Triangle, Square] = [Triangle(height, base) for _ in range(4)] + [Square(base), ]
+        self.sides: [Triangle, Square] = [Triangle(height, base) for _ in range(4)] + [Square(base)]
     # def base_square(self) -> int:
     #     base_square = self.base ** 2
     #     return base_square
@@ -110,7 +110,7 @@ class Pyramid(Area3DMixin, Triangle):
 
 
 cube = Cube(base=5)
-print(cube)  # TODO Вот так это работает
+print(cube)
 # print(cube.__str__())
 
 pyramid = Pyramid(height=5, base=5)
