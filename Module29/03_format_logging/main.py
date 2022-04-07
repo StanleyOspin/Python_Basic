@@ -4,7 +4,7 @@ import time
 
 
 def timer(cls, function: Callable, date_format: str) -> Callable:
-    '''Декоратор timer - передает формат вывода
+    '''Декоратор timer - передает формат вывода  todo кавычки докстрингов должны быть двойные: """   ...  """
         даты и времени логирования в декоратор
         log_methods
     '''
