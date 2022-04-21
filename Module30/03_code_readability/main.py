@@ -8,4 +8,4 @@ if __name__ == '__main__':
     is_prime_2: List[int] = [number for number in range(2, 1001) if
                              all(number % divider != 0 for divider in range(2, int(number ** 0.5) + 1))]
     print(list(is_prime_2))
-
+    # TODO надо было также написать вариант на циклах for и сравнить легкость чтения и понимания кода
