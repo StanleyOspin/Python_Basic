@@ -4,9 +4,11 @@ from typing import Callable
 
 def callback(parametr: str) -> Callable:
     def call_function(function: Callable) -> Callable:
-        # TODO тут надо добавить в "глобальный" словарь запись вида "урл: функция-обработчик"
+          # TODO тут надо добавить в "глобальный" словарь запись вида "урл: функция-обработчик"
+        app[parametr] = function()
         @functools.wraps(function)
         def wrapper(*args, **kwargs):
+
             return function(*args, **kwargs)
 
         return wrapper
@@ -20,7 +22,7 @@ def example():
     return 'OK'
 
 
-app = {'//': example}  # TODO оставьте переменную равной пустом словарю, а заполнить словарь должен именно декоратор
+app = {}  # TODO оставьте переменную равной пустом словарю, а заполнить словарь должен именно декоратор
 route = app.get('//')
 if route:
     response = route()

@@ -12,13 +12,12 @@ def check_permission(user_name: str) -> Callable:
         functools.wraps(function)
 
         def wrapped(*args, **kwargs):
-            if user_name == 'admin':  # TODO тут надо проверить вхождение user_name в список user_permission
+            if user_name in user_permissions:
                 function(*args, **kwargs)
 
-
-            else:  # TODO РЕР8: в теле фунции не делают больше одной пустой строки и длина строки кода превышает
-                   #  ограничение в 120 симиволов
-                raise PermissionError('У пользователя недостаточно прав, чтобы выполнить функцию {name}'.format(name=function.__name__))
+            else:
+                raise PermissionError('У пользователя недостаточно прав, '
+                                      'чтобы выполнить функцию {name}'.format(name=function.__name__))
 
         return wrapped
 

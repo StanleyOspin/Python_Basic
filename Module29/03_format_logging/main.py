@@ -4,10 +4,10 @@ import time
 
 
 def timer(cls, function: Callable, date_format: str) -> Callable:
-    '''Декоратор timer - передает формат вывода  todo кавычки докстрингов должны быть двойные: """   ...  """
+    """Декоратор timer - передает формат вывода 
         даты и времени логирования в декоратор
         log_methods
-    '''
+   """
 
     def wrapped(*args, **kwargs):
         format = date_format
@@ -27,8 +27,15 @@ def timer(cls, function: Callable, date_format: str) -> Callable:
 
 
 def log_methods(date_format: str) -> Callable:
-    """Декоратор, который логирует все методы декорируемого класса"""
-
+    """
+    Декоратор, который
+    логирует
+    все
+    методы
+    декорируемого
+    класса.
+    """
+    
     def decorate(cls):
         for method in dir(cls):
             if not method.startswith('__'):
@@ -38,8 +45,8 @@ def log_methods(date_format: str) -> Callable:
         return cls
 
     return decorate
-
-
+    
+    
 @log_methods("b d Y - H:M:S")
 class A:
     def test_sum_1(self) -> int:
@@ -66,8 +73,8 @@ class B(A):
             result += sum([i_num ** 2 for i_num in range(10000)])
 
         return result
-
-
+    
+    
 my_obj = B()
 my_obj.test_sum_1()
 my_obj.test_sum_2()
