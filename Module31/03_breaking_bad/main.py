@@ -5,6 +5,7 @@ from typing import Dict, List
 if __name__ == '__main__':
     deaths_request = requests.get('https://www.breakingbadapi.com/api/deaths')
     data = json.loads(deaths_request.text)
+
     with open('breaking_bad_file.json', 'w') as file:
         json.dump(data, file, indent=4)
 
@@ -33,9 +34,9 @@ if __name__ == '__main__':
             result['number_of_deaths'] = item.get('number_of_deaths')
             result['death'] = item.get('death')
 
-    with open('result_file.json', 'w') as file:
-        json.dump(result, file, indent=4)
+        with open('result_file.json', 'w') as file:
+            json.dump(result, file, indent=4)
 
-    with open('result_file.json', 'r') as file:
-        data = json.load(file)
-        print(data)
+        with open('result_file.json', 'r') as file:
+            data = json.load(file)
+            print(data)
