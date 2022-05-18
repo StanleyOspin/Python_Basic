@@ -6,5 +6,5 @@ if __name__ == '__main__':
   nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. 
   Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate 
   """
-    result = re.findall(r'\b\w{4}\b', text)
-    print(result)
+    my_list= re.findall(r'\b\w{4}\b', text)
+    print(my_list)
